@@ -61,6 +61,10 @@ class Post extends Model
         // Read: https://www.algolia.com/doc/guides/ranking/ranking-formula/#ranking
         $record['date_yymm'] = (int) $this->published_at->format('ym');
 
+        // Remove unused attributes
+        // nor for relevancy, nor for frontend UI (see http://community.algolia.com/instantsearch.js/)
+        unset($record['created_at'], $record['updated_at'], $record['author_id']);
+
         return $record;
     }
 }
