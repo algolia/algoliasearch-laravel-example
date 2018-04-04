@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
+    use Searchable;
+
     /**
      * Allow the use of `$this->published`
      *
@@ -24,5 +27,14 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function toSearchableArray()
+    {
+        $record = $this->toArray();
+
+        // Customize $record here
+
+        return $record;
     }
 }
