@@ -9,6 +9,8 @@ class Post extends Model
 {
     use Searchable;
 
+    protected $withCount = ['comments'];
+
     /**
      * Allow the use of `$this->published`
      *
