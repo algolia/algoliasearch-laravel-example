@@ -12,6 +12,7 @@ class Post extends Model
     protected $withCount = ['comments'];
 
     protected $casts = [
+        'nb_views' => 'int',
         'published_at' => 'date',
     ];
 
@@ -39,6 +40,11 @@ class Post extends Model
     {
         $record = $this->toArray();
 
+        // Make sure comments_count is converted to an int
+        // for better ranking performance since it's used in
+        // the custom ranking formula.
+        $record['comments_count'] = (int) $record['comments_count'];
+
         // We only index the author name
         // because we need it to build our view.
         // It's not used for relevancy
@@ -48,7 +54,7 @@ class Post extends Model
         // to use in our custom ranking.
         // The format is chosen in order to create many ties.
         // Read: https://www.algolia.com/doc/guides/ranking/ranking-formula/#ranking
-        $record['date_yymm'] = $this->published_at->format('ym');
+        $record['date_yymm'] = (int) $this->published_at->format('ym');
 
         return $record;
     }
