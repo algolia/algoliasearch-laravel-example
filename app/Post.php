@@ -36,6 +36,11 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function shouldBeSearchable()
+    {
+        return $this->published;
+    }
+
     public function toSearchableArray()
     {
         $record = $this->toArray();
