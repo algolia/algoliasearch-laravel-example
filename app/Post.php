@@ -11,6 +11,10 @@ class Post extends Model
 
     protected $withCount = ['comments'];
 
+    protected $casts = [
+        'published_at' => 'date',
+    ];
+
     /**
      * Allow the use of `$this->published`
      *
@@ -35,7 +39,16 @@ class Post extends Model
     {
         $record = $this->toArray();
 
-        // Customize $record here
+        // We only index the author name
+        // because we need it to build our view.
+        // It's not used for relevancy
+        $record['author_name'] = $this->author->name;
+
+        // We also index a date formatted per month
+        // to use in our custom ranking.
+        // The format is chosen in order to create many ties.
+        // Read: https://www.algolia.com/doc/guides/ranking/ranking-formula/#ranking
+        $record['date_yymm'] = $this->published_at->format('ym');
 
         return $record;
     }
