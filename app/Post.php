@@ -16,6 +16,11 @@ class Post extends Model
         return !is_null($this->published_at);
     }
 
+    public function author()
+    {
+        return $this->belongsTo(Author::class);
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
