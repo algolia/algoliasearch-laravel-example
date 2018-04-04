@@ -15,4 +15,9 @@ class Post extends Model
     {
         return !is_null($this->published_at);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
