@@ -16,3 +16,8 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+Artisan::command('demo:show:post {id}', function ($id) {
+    $post = App\Post::with(['comments', 'author'])->find($id);
+    dump($post);
+})->describe('Display an inspiring quote');
