@@ -65,7 +65,7 @@ class Post extends Model
 
         // Remove unused attributes
         // nor for relevancy, nor for frontend UI (see http://community.algolia.com/instantsearch.js/)
-        unset($record['created_at'], $record['updated_at'], $record['author_id']);
+        unset($record['created_at'], $record['author_id']);
 
         return $record;
     }
