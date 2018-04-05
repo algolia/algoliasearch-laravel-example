@@ -22,4 +22,21 @@ class Author extends Model
     {
         return $this->email;
     }
+
+    public static function boot()
+    {
+        /**
+         * This will keep the `author_name` attribute updated
+         * in posts if the author is updated.
+         * Note that the Laravel "touch" feature only works
+         * with BelongsTo relationships (see Comment class)
+         *
+         * To test it, use `php artisan demo:edit:author-name {id} {newName}`
+         */
+        static::saved(function ($model) {
+            $model->posts->filter(function ($item) {
+                return $item->shouldBeSearchable();
+            })->searchable();
+        });
+    }
 }
