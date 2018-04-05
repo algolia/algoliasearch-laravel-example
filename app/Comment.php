@@ -11,6 +11,8 @@ class Comment extends Model
     use Searchable;
     use SoftDeletes;
 
+    protected static $unguarded = true; // For demo purposes
+
     /**
      * Every time a new comment is added or an existing
      * comment is updated, Laravel will update the `updated_at`
