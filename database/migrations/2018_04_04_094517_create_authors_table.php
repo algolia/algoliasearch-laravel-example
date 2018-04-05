@@ -17,6 +17,7 @@ class CreateAuthorsTable extends Migration
             $table->increments('id');
 
             $table->string('name');
+            $table->string('email')->unique();
             $table->text('bio');
             $table->boolean('is_guest');
 
