@@ -15,5 +15,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call(AuthorSeeder::class);
         $this->call(PostSeeder::class);
+
+        \App\Author::all()->searchable();
+        \App\Post::all()->searchable();
+
+        \App\Post::enableSearchSyncing();
     }
 }
