@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'prefix' => env('SCOUT_PREFIX', ''),
+    'prefix' => env('SCOUT_PREFIX', 'algolia_demo_app_'),
 
     /*
     |--------------------------------------------------------------------------

@@ -1,10 +1,11 @@
 # Laravel Scout Example
 
-This project is meant to show case how you can use Laravel Scout
-in your project
+This project showcases how you can use Laravel Scout in your project.
 
-Clone the repo
+## Getting Started
+
+* Clone the repository
 * `touch database/database.sqlite`
 * Ensure `.env` is correct (path to database)
 * `php artisan migrate --seed`
-
+* `php artisan serve` and open it in your browser

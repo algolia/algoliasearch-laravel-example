@@ -30,6 +30,8 @@ class Comment extends Model
 
     public function shouldBeSearchable()
     {
-        return !$this->trashed();
+        // Add some logic to only
+        // index approved comment for instance
+        return true;
     }
 }
