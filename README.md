@@ -1,3 +1,11 @@
+<h1 align="center">
+    DEPRECATED: Use of this repository is deprecated. Please use the official
+    playground repository instead -
+    <a href="https://github.com/algolia/api-clients-playground/tree/master/laravel-scout-extended">
+        https://github.com/algolia/api-clients-playground/tree/master/laravel-scout-extended
+    </a>
+</h1>
+
 # Laravel Scout Example
 
 This project showcases how you can use Laravel Scout in your project.
